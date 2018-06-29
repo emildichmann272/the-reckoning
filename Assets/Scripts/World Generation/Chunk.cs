@@ -7,32 +7,31 @@ using UnityEngine.AI;
 public class Chunk : ScriptableObject
 {
     public GameObject[] tilePrefabs;
+    public GameObject chunkPrefab;
 
-    private static NavMeshData navData;
+    public static int SIZE = 16;
+    public static int tileSize = 10;
 
-    public static int WIDTH = 5;
-    public static int HEIGHT = 5;
-    public static Vector2[] chunks;
-
-    public static int tileWidth = 10;
-    public static int tileHeight = 10;
-
+    public static int CHUNKSIZE = SIZE * tileSize;
 
     public Chunk(){}
 
-    public void placeChunk(int x, int z, Transform worldTrans)
+    public void placeChunk(int x, int z, Transform worldTrans, LayerMask parentMask, GameObject chunkPre)
     {
-        GameObject chunkObj = new GameObject("chunk(" + x.ToString() + "-" + z.ToString() + ")");
+        GameObject chunkObj = new GameObject() ;
+        chunkObj.name = "chunk(" + x.ToString() + "-" + z.ToString() + ")";
         chunkObj.transform.parent = worldTrans;
+        chunkObj.layer = parentMask;
 
-        for (int xOffset = 0; xOffset <= WIDTH; xOffset++)
+        for (int xOffset = 0; xOffset <= SIZE; xOffset++)
         {
-            for (int zOffset = 0; zOffset <= HEIGHT; zOffset++)
+            for (int zOffset = 0; zOffset <= SIZE; zOffset++)
             {
                 GameObject tile = tilePrefabs[getRandomTileIndex()];
-                GameObject newTile = World.Instantiate(tile, new Vector3(x*WIDTH*tileWidth + xOffset*tileWidth, 0 , z*HEIGHT*tileHeight + zOffset*tileHeight), Quaternion.identity);
-                NavMeshSurface surf = newTile.GetComponent<NavMeshSurface>();
-                
+                GameObject newTile = Instantiate(tile, new Vector3(x* CHUNKSIZE + xOffset*tileSize, 0 , z* CHUNKSIZE + zOffset*tileSize), Quaternion.identity);
+
+                newTile.layer = parentMask;
+
                 newTile.transform.parent = chunkObj.transform;
             }
         }

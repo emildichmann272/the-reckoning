@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: Base
   m_EditorClassIdentifier: 
   tilePrefabs:
-  - {fileID: 1097133696057262, guid: 3218ce29a36d30c4c8f8f57a2453597b, type: 2}
+  - {fileID: 1828840575501998, guid: 3218ce29a36d30c4c8f8f57a2453597b, type: 2}
   - {fileID: 1907508051324442, guid: f7623a280ef4d3245845fc5fc9769400, type: 2}
-  tileWidth: 10
+  chunkPrefab: {fileID: 1542378304478354, guid: cef1a399e49731b4d98307fac0e94826,
+    type: 2}

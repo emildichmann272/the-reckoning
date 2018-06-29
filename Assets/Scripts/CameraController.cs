@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChunkLoader : MonoBehaviour {
+public class CameraController : MonoBehaviour {
 
     public float edgeWidth = 0.1f;
     public float panSpeed = 2f;
@@ -29,6 +29,7 @@ public class ChunkLoader : MonoBehaviour {
 
     private int backMask;
 
+    bool first = true;
 
     // Use this for initialization
     void Start () {
@@ -46,25 +47,6 @@ public class ChunkLoader : MonoBehaviour {
         camMovementRight.y = 0;
         camMovementRight.Normalize();
 
-        Vector3 camRay1 = Camera.main.ScreenPointToRay(new Vector2(0, 0)).direction;
-        Vector3 camRay2 = Camera.main.ScreenPointToRay(new Vector2(Camera.main.pixelWidth, Camera.main.pixelHeight)).direction;
-
-        float k1 = (-transform.position.y) / camRay1.y;
-        float k2 = (-transform.position.y) / camRay2.y;
-
-        Vector3 p1 = camRay1 * k1 + transform.position;
-        Vector3 p2 = camRay2 * k2 + transform.position;
-
-        crosVec = p1 - p2;
-
-        float width = 10f * backPlane.localScale.x;
-        float height = 10f * backPlane.localScale.z;
-        Vector3 bPos = backPlane.position;
-        bPos.x -= width / 2f;
-        bPos.z -= height / 2f;
-
-        worldController.LoadChunks(bPos.x, bPos.z, width, height);
-
         Vector2 currentPosition = new Vector2(transform.position.x, transform.position.z);
         lastChunkCheck = currentPosition;
 
@@ -80,6 +62,29 @@ public class ChunkLoader : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (first)
+        {
+            Vector3 camRay1 = Camera.main.ScreenPointToRay(new Vector2(0, 0)).direction;
+            Vector3 camRay2 = Camera.main.ScreenPointToRay(new Vector2(Camera.main.pixelWidth, Camera.main.pixelHeight)).direction;
+
+            float k1 = (-transform.position.y) / camRay1.y;
+            float k2 = (-transform.position.y) / camRay2.y;
+
+            Vector3 p1 = camRay1 * k1 + transform.position;
+            Vector3 p2 = camRay2 * k2 + transform.position;
+
+            crosVec = p1 - p2;
+
+            float width = 10f * backPlane.localScale.x;
+            float height = 10f * backPlane.localScale.z;
+            Vector3 bPos = backPlane.position;
+            bPos.x -= width / 2f;
+            bPos.z -= height / 2f;
+
+            worldController.LoadChunks(bPos.x, bPos.z, width, height);
+
+            first = false;
+        }
         float press = Input.GetAxisRaw("Cancel");
         //Debug.Log(press.ToString() + "  " + lastPress.ToString());
         if (press != lastPress)
@@ -168,7 +173,7 @@ public class ChunkLoader : MonoBehaviour {
             Vector2 currentPosition = new Vector2(transform.position.x, transform.position.z);
             Vector2 deltaDistance = currentPosition - lastChunkCheck;
 
-            if (deltaDistance.magnitude > worldController.chunkSize)
+            if (deltaDistance.magnitude > Chunk.SIZE)
             {
                 worldController.LoadChunks(bPos.x, bPos.z, width, height);
                 lastChunkCheck = currentPosition;

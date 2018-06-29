@@ -220,7 +220,7 @@ MonoBehaviour:
   maxZoomIn: 2
   maxZoomOut: 0
   scrollDampener: 0.95
-  freeze: 0
+  freeze: 1
 --- !u!20 &282840813
 Camera:
   m_ObjectHideFlags: 0
@@ -352,6 +352,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1757671199}
   - component: {fileID: 1757671200}
+  - component: {fileID: 1757671201}
   m_Layer: 0
   m_Name: World
   m_TagString: Untagged
@@ -385,4 +386,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chunkTypes:
   - {fileID: 11400000, guid: dd3e2d65391fc5c4abbafe41d27f42ee, type: 2}
-  chunkSize: 50
+  chunkBase: {fileID: 1107358698823106, guid: 3b5ce5419a4fab7478948bad8a7ce298, type: 2}
+  randomGeneration: 1
+--- !u!114 &1757671201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1757671198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_BuildHeightMesh: 0
+  m_NavMeshData: {fileID: 0}
