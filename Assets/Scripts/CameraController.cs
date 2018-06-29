@@ -86,7 +86,6 @@ public class CameraController : MonoBehaviour {
             first = false;
         }
         float press = Input.GetAxisRaw("Cancel");
-        //Debug.Log(press.ToString() + "  " + lastPress.ToString());
         if (press != lastPress)
         {
             if (press == 1)
@@ -190,6 +189,7 @@ public class CameraController : MonoBehaviour {
             
             if (hit)
             {
+                //TODO: insert navAgent control
                 Debug.Log(rayHit.point);
             }
         }

@@ -11,18 +11,13 @@ public class World : MonoBehaviour {
 
     public bool randomGeneration = true;
 
-    private NavMeshSurface navSurface;
-
     private LayerMask ground;
-
-    private bool updatingNavMesh = false;
 
     // Use this for initialization
     void Start () {
-        navSurface = GetComponent<NavMeshSurface>();
         ground = LayerMask.NameToLayer("Ground");
         AddNavMeshData();
-        BuildMask = ground;
+        BuildMask = ~0;
         NullMask = 0;
     }
 
@@ -41,7 +36,6 @@ public class World : MonoBehaviour {
         {
             for (int z = -1; z <= h0; z++)
             {
-                Debug.Log(x);
                 Transform chunk = this.gameObject.transform.Find("chunk(" + (x + x0).ToString() + "-" + (z + z0).ToString() + ")");
                 if (chunk == null)
                 {
@@ -123,7 +117,7 @@ public class World : MonoBehaviour {
         NavMeshBuilder.CollectSources(
             new Bounds(BoundsCenter, BoundsSize),
             mask,
-            NavMeshCollectGeometry.PhysicsColliders,
+            NavMeshCollectGeometry.RenderMeshes,
             0,
             new List<NavMeshBuildMarkup>(),
             sources);
