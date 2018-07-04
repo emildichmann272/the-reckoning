@@ -5,19 +5,20 @@ using UnityEngine.AI;
 
 public class World : MonoBehaviour {
 
-    public Chunk[] chunkTypes;
-
-    public GameObject chunkBase;
+    public Chunk chunkType;
 
     public bool randomGeneration = true;
 
     private LayerMask ground;
 
+    LayerMask BuildMask;
+    LayerMask NullMask;
+
     // Use this for initialization
     void Start () {
         ground = LayerMask.NameToLayer("Ground");
         AddNavMeshData();
-        BuildMask = ~0;
+        BuildMask = LayerMask.NameToLayer("Default");
         NullMask = 0;
     }
 
@@ -36,21 +37,24 @@ public class World : MonoBehaviour {
         {
             for (int z = -1; z <= h0; z++)
             {
-                Transform chunk = this.gameObject.transform.Find("chunk(" + (x + x0).ToString() + "-" + (z + z0).ToString() + ")");
+                Transform chunk = GetChunk(x + x0, z + z0);
                 if (chunk == null)
                 {
-                    chunkTypes[0].placeChunk(x + x0, z + z0, this.transform, ground, chunkBase);
+                    chunkType.PlaceChunk(x + x0, z + z0, transform, ground, this);
                 }
             }
         }
     }
 
+    public Transform GetChunk(int x, int z)
+    {
+        return gameObject.transform.Find("chunk(" + (x).ToString() + "-" + (z).ToString() + ")");
+    }
+
+    
     // Nav mesh builder
     Vector3 BoundsCenter = Vector3.zero;
     Vector3 BoundsSize = new Vector3(999999f, 4000f, 999999f);
-
-    LayerMask BuildMask;
-    LayerMask NullMask;
 
     NavMeshData NavMeshData;
     NavMeshDataInstance NavMeshDataInstance;
@@ -92,7 +96,7 @@ public class World : MonoBehaviour {
         AsyncOperation op = NavMeshBuilder.UpdateNavMeshDataAsync(
             NavMeshData,
             NavMesh.GetSettingsByID(0),
-            GetBuildSources(BuildMask),
+            GetBuildSources(LayerMask.GetMask("Ground")),
             new Bounds(BoundsCenter, BoundsSize));
         yield return op;
 
@@ -104,7 +108,7 @@ public class World : MonoBehaviour {
     {
         NavMeshData = NavMeshBuilder.BuildNavMeshData(
             NavMesh.GetSettingsByID(0),
-            GetBuildSources(NullMask),
+            GetBuildSources(0),
             new Bounds(BoundsCenter, BoundsSize),
             Vector3.zero,
             Quaternion.identity);

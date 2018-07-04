@@ -27,13 +27,14 @@ public class CameraController : MonoBehaviour {
 
     private Vector2 lastChunkCheck;
 
-    private int backMask;
+    private int backMask, selectMask;
 
     bool first = true;
 
     // Use this for initialization
     void Start () {
         backMask = LayerMask.GetMask("BackPlaneRaycast");
+        selectMask = LayerMask.GetMask("SelectRaycast");
 
         backPlane = GameObject.Find("BackPlanePivot").transform;
         worldController = GameObject.Find("World").GetComponent<World>();
@@ -179,10 +180,10 @@ public class CameraController : MonoBehaviour {
             }
         }
 
+        Ray mouseRay = Camera.main.ScreenPointToRay(mousePosition);
+
         if (Input.GetMouseButtonDown(1))
-        {
-            
-            Ray mouseRay = Camera.main.ScreenPointToRay(mousePosition);
+        {    
             RaycastHit rayHit;
 
             bool hit = Physics.Raycast(mouseRay, out rayHit, 1000, backMask);
@@ -191,6 +192,15 @@ public class CameraController : MonoBehaviour {
             {
                 //TODO: insert navAgent control
                 Debug.Log(rayHit.point);
+            }
+        }
+
+        RaycastHit[] rayhits = Physics.RaycastAll(mouseRay, 1000, selectMask);
+        if (rayhits.Length > 0)
+        {
+            foreach(RaycastHit hit in rayhits)
+            {
+                Transform obj = hit.transform;
             }
         }
 

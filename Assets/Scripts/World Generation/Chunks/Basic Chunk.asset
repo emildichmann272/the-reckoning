@@ -9,10 +9,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef2fdf631bcb56b4d986090cf42d9a85, type: 3}
-  m_Name: Base
+  m_Name: Basic Chunk
   m_EditorClassIdentifier: 
-  tilePrefabs:
-  - {fileID: 1828840575501998, guid: 3218ce29a36d30c4c8f8f57a2453597b, type: 2}
-  - {fileID: 1907508051324442, guid: f7623a280ef4d3245845fc5fc9769400, type: 2}
-  chunkPrefab: {fileID: 1542378304478354, guid: cef1a399e49731b4d98307fac0e94826,
-    type: 2}
+  tiles:
+  - {fileID: 11400000, guid: 1e9e920c86233644db393f6269a3108c, type: 2}
+  - {fileID: 11400000, guid: 043cc1f0c82a35246b2227fb264789c6, type: 2}
