@@ -209,7 +209,7 @@ public class Chunk : ScriptableObject
     private static int GetTileType(float x, float y)
     {
         //TODO: create world that fit intended play style
-        float sample = (Mathf.PerlinNoise((x) / 4, y / 4 + 1000) > 0.3 ? 1 : 0) - (Mathf.PerlinNoise((x) / 12, y / 12 + 1000) > 0.3 ? 1 : 0);
+        float sample = (Mathf.PerlinNoise((x) / 4, y / 4 + 1000) > 0.5 ? 1 : 0);
         if (sample >= 0.2)
         {
             return 0;

@@ -8,9 +8,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef2fdf631bcb56b4d986090cf42d9a85, type: 3}
-  m_Name: Basic Chunk
+  m_Script: {fileID: 11500000, guid: 4148f2c3b9859db4d8eef89f7c6cd0c9, type: 3}
+  m_Name: Cross Over
   m_EditorClassIdentifier: 
+  tileMask: 010001010001010001
+  hasInverse: 0
   tiles:
-  - {fileID: 11400000, guid: 52eeb18c413117c468eca2980298be57, type: 2}
-  - {fileID: 11400000, guid: f9b4e3338e8342545a282253d97d1f69, type: 2}
+  - {fileID: 1344378971547518, guid: ddff0a0b45e5be84fa1bde66aebc31da, type: 2}

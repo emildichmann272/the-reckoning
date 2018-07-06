@@ -18,6 +18,9 @@ public class TileOrientationAliasEditor : Editor {
 
     public override void OnInspectorGUI()
     {
+        EditorUtility.SetDirty(target);
+        script = (TileOrientationAlias)target;
+
         EditorGUILayout.PrefixLabel("Tile Mask");
         for (int i = 0; i < 9; i++)
         {
@@ -39,6 +42,7 @@ public class TileOrientationAliasEditor : Editor {
                 EditorGUILayout.EndHorizontal();
             }
         }
+        
 
         EditorGUILayout.PrefixLabel("Has inverse");
         script.hasInverse = EditorGUILayout.Toggle(script.hasInverse);

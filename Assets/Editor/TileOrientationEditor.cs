@@ -12,13 +12,13 @@ public class TileOrientationEditor : Editor {
         GUILayout.Width(200),
         GUILayout.MaxWidth(200)
     };
-    public void OnEnable()
-    {
-        script = (TileOrientation)target;
-    }
 
     public override void OnInspectorGUI()
     {
+        EditorUtility.SetDirty(target);
+        script = (TileOrientation)target;
+
+
         EditorGUILayout.PrefixLabel("Tile Mask");
         for (int i = 0; i < 9; i++)
         {
@@ -74,7 +74,6 @@ public class TileOrientationEditor : Editor {
         }
         EditorGUILayout.PrefixLabel("Add new tile");
         script.addTile((GameObject)EditorGUILayout.ObjectField(null, typeof(GameObject), false));
-
     }
 
 }

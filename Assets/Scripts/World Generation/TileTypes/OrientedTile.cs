@@ -6,8 +6,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Oriented Tile", menuName = "World Generation/New Oriented Tile")]
 public class OrientedTile : Tile
 {
-    [SerializeField] public TileOrientationAbstract[] tiles;
-    [SerializeField] public GameObject nullTile;
+    public TileOrientationAbstract[] tiles;
+    public GameObject nullTile;
+    public GameObject groundTile;
+    public GameObject floorTile;
 
     public override GameObject SpawnTile(int x, int z, bool[] nearbyTiles)
     {
@@ -21,6 +23,10 @@ public class OrientedTile : Tile
             count += nearbyTiles[i] ? 1 : 0;
         }
         int connectionCount = count;
+        if (connectionCount >= 7 && connectionCount == 1)
+        {
+            return Instantiate(groundTile, new Vector3(x, 0, z), Quaternion.identity); ;
+        }
         GameObject tile = null;
         foreach (TileOrientationAbstract orientation in tiles)
         {
@@ -47,7 +53,7 @@ public class OrientedTile : Tile
         {
             output += arg ? "1" : "0";
         }
-        Debug.Log("Unimplemented rotation " + output);
+        //Debug.Log("Unimplemented rotation " + output);
         
         return Instantiate(nullTile, new Vector3(x, 0, z), Quaternion.identity); ;
     }
