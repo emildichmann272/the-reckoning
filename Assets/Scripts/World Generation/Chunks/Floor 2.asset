@@ -8,11 +8,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6cc0e7b88f82ac44af9a3d89acd6eec, type: 3}
+  m_Script: {fileID: 11500000, guid: 4148f2c3b9859db4d8eef89f7c6cd0c9, type: 3}
   m_Name: Floor 2
   m_EditorClassIdentifier: 
-  tileMask: 010000010000000101
+  tileMask: 000100010001000100
+  floorMask: 010001000000010001
   hasInverse: 0
   tiles:
   - {fileID: 1344378971547518, guid: ddff0a0b45e5be84fa1bde66aebc31da, type: 2}
-  origin: {fileID: 11400000, guid: 06501e5b28059de488b30f95a718f23b, type: 2}

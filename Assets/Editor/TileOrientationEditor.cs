@@ -41,6 +41,28 @@ public class TileOrientationEditor : Editor {
             }
         }
 
+        EditorGUILayout.PrefixLabel("Floor Mask");
+        for (int i = 0; i < 9; i++)
+        {
+            int rowIndex = i % 3;
+            if (rowIndex == 0)
+            {
+                EditorGUILayout.BeginHorizontal(toggleMenuOptions);
+            }
+            if (i != 4)
+            {
+                script.floorMask[i] = EditorGUILayout.Toggle(script.floorMask[i]);
+            }
+            else
+            {
+                EditorGUILayout.Toggle(false);
+            }
+            if (rowIndex == 2)
+            {
+                EditorGUILayout.EndHorizontal();
+            }
+        }
+
         EditorGUILayout.PrefixLabel("Has inverse");
         script.hasInverse = EditorGUILayout.Toggle(script.hasInverse);
 

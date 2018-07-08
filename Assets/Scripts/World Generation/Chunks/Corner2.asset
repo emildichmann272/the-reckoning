@@ -11,7 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4148f2c3b9859db4d8eef89f7c6cd0c9, type: 3}
   m_Name: Corner2
   m_EditorClassIdentifier: 
-  tileMask: 000101010001010101
+  tileMask: 000100010000000000
+  floorMask: 010000000000000000
   hasInverse: 0
   tiles:
   - {fileID: 1978128335753258, guid: 85e289e107fe29b48b13392306d5f5a3, type: 2}

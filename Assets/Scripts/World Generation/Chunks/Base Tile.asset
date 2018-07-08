@@ -9,6 +9,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d584f212721fee49ad280e6554073de, type: 3}
-  m_Name: Base Tile 1
+  m_Name: Base Tile
   m_EditorClassIdentifier: 
   tile: {fileID: 1344378971547518, guid: ddff0a0b45e5be84fa1bde66aebc31da, type: 2}

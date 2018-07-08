@@ -9,5 +9,6 @@ public class TileOrientation : TileOrientationAbstract
     public TileOrientation()
     {
         tileMask = new bool[9];
+        floorMask = new bool[9];
     }
 }

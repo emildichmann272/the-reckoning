@@ -5,9 +5,12 @@ using UnityEngine;
 public class TileOrientationAbstract : ScriptableObject{
 
     public bool[] tileMask;
+    public bool[] floorMask;
     public bool hasInverse;
     private bool inversed;
-    private int connectionCount;
+    private int tileConnectionCount;
+    private int floorConnectionCount;
+    private int totalConnectionCount;
     public GameObject[] tiles = new GameObject[0];
 
     private int rotations = 0;
@@ -19,7 +22,7 @@ public class TileOrientationAbstract : ScriptableObject{
 
     public int GetConnectionCount()
     {
-        return connectionCount;
+        return tileConnectionCount;
     }
 
     public void addTile(GameObject obj)
@@ -40,22 +43,25 @@ public class TileOrientationAbstract : ScriptableObject{
         GameObject tile = null;
         for (int rotation = 0; rotation < 360 - 1; rotation += 90)
         {
-            bool same = true;
+            int similar = 0;
             for (int i = 0; i < nearbyTiles.Length; i++)
             {
                 if (i == 4) { continue; }
-                if (nearbyTiles[i] != tileMask[i])
+                if (nearbyTiles[i] == true && tileMask[i] == true)
                 {
-                    same = false;
-                    break;
+                    similar++;
+                }
+                if (nearbyTiles[i] == false && floorMask[i] == true)
+                {
+                    similar++;
                 }
             }
-            if (same)
+            if (similar == totalConnectionCount)
             {
                 tile = Instantiate(tiles[Random.Range(0, tiles.Length)], new Vector3(x, 0, z), Quaternion.Euler(0, 180 - rotation, 0));
                 break;
             }
-            RotateTileMask();
+            RotateMask();
         }
         Reset();
         return tile;
@@ -63,19 +69,29 @@ public class TileOrientationAbstract : ScriptableObject{
 
     public void FindConnectionCount()
     {
-        if (tileMask == null)
+        if (tileMask == null && floorMask == null)
         {
             return;
         }
-            connectionCount = 0;
+        tileConnectionCount = 0;
         int i = 0;
         foreach (bool t in tileMask)
         {
             if (t && i != 4)
             {
-                connectionCount += 1;
+                tileConnectionCount++;
             }
         }
+        i = 0;
+        floorConnectionCount = 0;
+        foreach (bool f in floorMask)
+        {
+            if (f && i != 4)
+            {
+                floorConnectionCount++;
+            }
+        }
+        totalConnectionCount = tileConnectionCount + floorConnectionCount;
     }
 
     public void OnEnable()
@@ -83,7 +99,7 @@ public class TileOrientationAbstract : ScriptableObject{
         FindConnectionCount();
     }
 
-    public void RotateTileMask()
+    public void RotateMask()
     {
         bool temp = tileMask[0];
         tileMask[0] = tileMask[6];
@@ -96,6 +112,18 @@ public class TileOrientationAbstract : ScriptableObject{
         tileMask[3] = tileMask[7];
         tileMask[7] = tileMask[5];
         tileMask[5] = temp;
+
+        temp = floorMask[0];
+        floorMask[0] = floorMask[6];
+        floorMask[6] = floorMask[8];
+        floorMask[8] = floorMask[2];
+        floorMask[2] = temp;
+
+        temp = floorMask[1];
+        floorMask[1] = floorMask[3];
+        floorMask[3] = floorMask[7];
+        floorMask[7] = floorMask[5];
+        floorMask[5] = temp;
 
         rotations = (rotations + 1) % 4;
     }
@@ -114,13 +142,26 @@ public class TileOrientationAbstract : ScriptableObject{
         temp = tileMask[6];
         tileMask[6] = tileMask[8];
         tileMask[8] = temp;
+
+
+        temp = floorMask[0];
+        floorMask[0] = floorMask[2];
+        floorMask[2] = temp;
+
+        temp = floorMask[3];
+        floorMask[3] = floorMask[5];
+        floorMask[5] = temp;
+
+        temp = floorMask[6];
+        floorMask[6] = floorMask[8];
+        floorMask[8] = temp;
     }
 
     public void Reset()
     {
         while (rotations != 0)
         {
-            RotateTileMask();
+            RotateMask();
         }
         if (inversed)
         {

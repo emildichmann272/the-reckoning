@@ -30,7 +30,7 @@ public class OrientedTile : Tile
         GameObject tile = null;
         foreach (TileOrientationAbstract orientation in tiles)
         {
-            if (connectionCount == orientation.GetConnectionCount())
+            if (connectionCount >= orientation.GetConnectionCount())
             {
                 tile = orientation.PlaceTile(nearbyTiles, x, z);
                 if (tile == null && orientation.HasInverse())

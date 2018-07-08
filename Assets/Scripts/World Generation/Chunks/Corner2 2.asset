@@ -9,9 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4148f2c3b9859db4d8eef89f7c6cd0c9, type: 3}
-  m_Name: Wall
+  m_Name: Corner2 2
   m_EditorClassIdentifier: 
-  tileMask: 000000010001010101
+  tileMask: 000100010001000101
+  floorMask: 010001000000010000
   hasInverse: 0
   tiles:
-  - {fileID: 1569077733327926, guid: ba88d72fe15e9c84a87f8fd1df3b1ea3, type: 2}
+  - {fileID: 1522829553215004, guid: 8d878947534a5de4b9f57ca7fc57e4f6, type: 2}

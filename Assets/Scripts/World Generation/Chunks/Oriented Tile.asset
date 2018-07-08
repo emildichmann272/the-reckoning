@@ -12,32 +12,17 @@ MonoBehaviour:
   m_Name: Oriented Tile
   m_EditorClassIdentifier: 
   tiles:
-  - {fileID: 11400000, guid: b36dd0d60edaf30459dee50294b231d0, type: 2}
-  - {fileID: 11400000, guid: cd23d3277fddf69488e6a8cfa3f63c26, type: 2}
-  - {fileID: 11400000, guid: 16100e5732ca3dd439ed4183b952fc88, type: 2}
-  - {fileID: 11400000, guid: da6d09f57242e11479152ac6af9efa36, type: 2}
-  - {fileID: 11400000, guid: ea3167845ab1d0c41847065b46813847, type: 2}
-  - {fileID: 11400000, guid: ed22adbe4d2414446b37e483ec1c9778, type: 2}
-  - {fileID: 11400000, guid: 632c849f10ee98541b24f8f169f1fe36, type: 2}
-  - {fileID: 11400000, guid: 06501e5b28059de488b30f95a718f23b, type: 2}
-  - {fileID: 11400000, guid: 48191aeae9d8a3640b2aa3bafc53aba9, type: 2}
-  - {fileID: 11400000, guid: dda795909a5774f439cf0057ec39e1ae, type: 2}
-  - {fileID: 11400000, guid: ba2211f6854f1704fa4e0f8e1a2d5707, type: 2}
-  - {fileID: 11400000, guid: 4b996ba9d31566345945c4ef07282839, type: 2}
-  - {fileID: 11400000, guid: 6e24ee60b1c143445960e05a6b74f9cc, type: 2}
-  - {fileID: 11400000, guid: 9894e915960b99a44a81ec1190f06ce7, type: 2}
-  - {fileID: 11400000, guid: cb4ccbc3cd5effc439f5af8c34363fe5, type: 2}
-  - {fileID: 11400000, guid: c04fbf1eed794b9488f1f71738be364b, type: 2}
-  - {fileID: 11400000, guid: f580c459c90f8a84896246d44ffeeabc, type: 2}
-  - {fileID: 11400000, guid: 7bd1db61bf532d04eabdc12aade82d6f, type: 2}
-  - {fileID: 11400000, guid: eb47f5c7c7bbb94419c3b4c4a3c563e9, type: 2}
-  - {fileID: 11400000, guid: 80d5734a9ec0dc447913f2a26b0b6b81, type: 2}
-  - {fileID: 11400000, guid: e25e9482ce1916c479191eb221b7d916, type: 2}
-  - {fileID: 11400000, guid: 743cc37cb12ce354988756876820bf94, type: 2}
-  - {fileID: 11400000, guid: acd04444120f8774c8c22721922d5af1, type: 2}
-  - {fileID: 11400000, guid: f2935c95ec2cf6f41983a6041c6b3003, type: 2}
-  - {fileID: 11400000, guid: fd821607a6a1353478e0517edac7e353, type: 2}
-  - {fileID: 11400000, guid: 37cec26cd498d314ab31f67f409535f2, type: 2}
+  - {fileID: 11400000, guid: d214ade9f63a78b48a218d6f1954f03b, type: 2}
+  - {fileID: 11400000, guid: 06113f99745edc94cb95ee0c9d6350b4, type: 2}
+  - {fileID: 11400000, guid: 9adb1c2c85c23ec438efe336bd31a44b, type: 2}
+  - {fileID: 11400000, guid: 7db41305d134f2b4589f67ecb77a94b1, type: 2}
+  - {fileID: 11400000, guid: bd8b60594ca7b264a86100d7a9408841, type: 2}
+  - {fileID: 11400000, guid: 73ce38c9e6c18a0448723f7e6124deb4, type: 2}
+  - {fileID: 11400000, guid: 636d8bb2016164842be7740cd0f9cf68, type: 2}
+  - {fileID: 11400000, guid: ce6386395edfeac47975e6c8d455d0a9, type: 2}
+  - {fileID: 11400000, guid: 2933e9f62406b8f498e18b739814c46e, type: 2}
+  - {fileID: 11400000, guid: 0409ec1d5431fff46a920eb988da224f, type: 2}
+  - {fileID: 11400000, guid: 2f0cdad28b03e0840b4bef35c8afe9d6, type: 2}
   nullTile: {fileID: 1344378971547518, guid: be2ac6cc5c6dc0a42bcc03cc5e795e1a, type: 2}
   groundTile: {fileID: 1344378971547518, guid: bcde81f6e40c93944b91f5987af54f76, type: 2}
   floorTile: {fileID: 1344378971547518, guid: ddff0a0b45e5be84fa1bde66aebc31da, type: 2}
