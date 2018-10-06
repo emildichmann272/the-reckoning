@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class CameraController : MonoBehaviour {
 
@@ -13,6 +14,9 @@ public class CameraController : MonoBehaviour {
     [SerializeField] public float scrollDampener;
 
     public bool freeze = false;
+
+    public NavMeshAgent player;
+
     private float lastPress = 0;
 
     private float currentZoom = 1;

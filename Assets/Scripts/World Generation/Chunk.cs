@@ -38,7 +38,6 @@ public class Chunk : ScriptableObject
         {
             for (int xOffset = 0; xOffset < SIZE; xOffset++)
             {
-                int generatedTileIndex = xOffset + zOffset * SIZE;
                 int index = GetTile(xOffset , zOffset);
                 Tile tile = tiles[index];
 

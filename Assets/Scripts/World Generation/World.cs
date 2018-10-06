@@ -11,15 +11,10 @@ public class World : MonoBehaviour {
 
     private LayerMask ground;
 
-    LayerMask BuildMask;
-    LayerMask NullMask;
-
     // Use this for initialization
     void Start () {
         ground = LayerMask.NameToLayer("Ground");
         AddNavMeshData();
-        BuildMask = LayerMask.NameToLayer("Default");
-        NullMask = 0;
     }
 
     public void LoadChunks(float x1, float z1, float w, float h)
@@ -96,7 +91,7 @@ public class World : MonoBehaviour {
         AsyncOperation op = NavMeshBuilder.UpdateNavMeshDataAsync(
             NavMeshData,
             NavMesh.GetSettingsByID(0),
-            GetBuildSources(LayerMask.GetMask("Ground")),
+            GetBuildSources(ground),
             new Bounds(BoundsCenter, BoundsSize));
         yield return op;
 
